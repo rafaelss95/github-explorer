@@ -1,9 +1,15 @@
-import { RepositoryItem } from "./RepositoryItem";
-import "../styles/repositories.scss";
 import { useEffect, useState } from "react";
+import "../styles/repositories.scss";
+import { RepositoryItem } from "./RepositoryItem";
+
+type Repository = {
+  readonly description: string;
+  readonly html_url: string;
+  readonly name: string;
+};
 
 export function RepositoryList() {
-  const [repositories, setRepositories] = useState([]);
+  const [repositories, setRepositories] = useState<readonly Repository[]>([]);
 
   useEffect(() => {
     (async function () {
